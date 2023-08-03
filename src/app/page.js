@@ -75,7 +75,6 @@ export default function Home() {
         })
       );
       const totalAllTimeViews = allTimeVideoViews.reduce((sum, views) => sum + views, 0);
-      // const allTimeAvg = totalAllTimeViews / allTimeVideoViews.length;
       setAllTimeAvgView(totalAllTimeViews);
     }
 
@@ -88,37 +87,10 @@ export default function Home() {
         })
       );
       const totalMonthViews = monthVideoViews.reduce((sum, views) => sum + views, 0);
-      // const monthAvg = totalMonthViews / monthVideoViews.length;
       setLastMonthAvgView(totalMonthViews);
     }
   };
 
-  // const monthlyKeywordVolume = () => {
-  //   let final = (allTimeAvgView < lastMonthAvgView) ? allTimeAvgView : lastMonthAvgView
-  //   if (allTimeAvgView > 1 && lastMonthAvgView > 1) {
-  //     // ((allTimeAvgView) + (lastMonthAvgView) +
-  //     //   (allVideos.pageInfo.totalResults) +
-  //     //   (monthVideos.pageInfo.totalResults)
-  //     //   );
-  //     // (((allTimeAvgView / 100) + lastMonthAvgView) / 2) +
-  //     // (allVideos.pageInfo.totalResults / 100) +
-  //     // (monthVideos.pageInfo.totalResults / 100);
-
-  //     // if ((parseInt(final, 10)) > 1000000) {
-  //     //   console.log((parseInt(final, 10)));
-  //     //   return (parseInt(final, 10)) / 100;
-  //     // }
-  //     // else if ((parseInt(final, 10)) > 100000) {
-  //     //   console.log((parseInt(final, 10)));
-  //     //   return (parseInt(final, 10)) / 10;
-  //     // }
-  //     // else {
-  //     //   console.log((parseInt(final, 10)));
-  //     //   return (parseInt(final, 10));
-  //     // }
-  //     return (parseInt(final, 10));
-  //   }
-  // }
 
   const [finalAns, setFinalAns] = useState(null);
   const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -131,7 +103,6 @@ export default function Home() {
     countAvgView();
     setTimeout(() => {
       setButtonDisabled(false);
-      // setFinalAns();
     }, 2000);
   }
 
@@ -152,19 +123,6 @@ export default function Home() {
         </form>
         
         {allTimeAvgView > 1 && lastMonthAvgView > 1 && monthVideos?.pageInfo && allVideos?.pageInfo ? (
-          // <p>
-          //   Estimated Monthly Search volume for <strong>{searchKeyword}</strong> is <strong>{finalAns}</strong>.
-          //   <br /><br />
-          //   Considered below data for this estimation:
-          //   <br /><br />
-          //   Sum of Last Month Views of <strong>{monthVideos.pageInfo.resultsPerPage < allVideos.pageInfo.resultsPerPage ? monthVideos.pageInfo.resultsPerPage : allVideos.pageInfo.resultsPerPage}</strong> videos: <strong>{lastMonthAvgView < allTimeAvgView ? lastMonthAvgView : allTimeAvgView}</strong>
-          //   <br /><br />
-          //   Sum of All Time Views of <strong>{monthVideos.pageInfo.resultsPerPage > allVideos.pageInfo.resultsPerPage ? monthVideos.pageInfo.resultsPerPage : allVideos.pageInfo.resultsPerPage}</strong> videos: <strong>{lastMonthAvgView > allTimeAvgView ? lastMonthAvgView : allTimeAvgView}</strong>
-          //   <br /><br />
-          //   Total All Time Results: <strong>{allVideos.pageInfo.totalResults > monthVideos.pageInfo.totalResults ? allVideos.pageInfo.totalResults : monthVideos.pageInfo.totalResults}</strong>
-          //   <br /><br />
-          //   Last Month Results: <strong>{allVideos.pageInfo.totalResults < monthVideos.pageInfo.totalResults ? allVideos.pageInfo.totalResults : monthVideos.pageInfo.totalResults}</strong>
-          // </p>
           <p>
             <br />
             Estimated Monthly Search volume for <strong>{searchKeyword}</strong> is <strong>{lastMonthAvgView < allTimeAvgView ? parseInt(lastMonthAvgView/2, 10) : parseInt(allTimeAvgView/2, 10)}</strong>.
